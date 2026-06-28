@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ─── Root / Box model ─────────────────────────── */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Prevent iOS font-size boost in landscape */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-text font-body antialiased;
+    overflow-x: hidden;
+    /* Minimum body font size 16px for readability */
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+    line-height: 1.2;
+  }
+
+  /* ─── Touch Targets (WCAG 2.5.5) ──────────────── */
+  /* Every button and interactive element: min 48×48px on mobile */
+  button, a, [role="button"], [type="button"], [type="submit"] {
+    touch-action: manipulation;
+  }
+
+  /* ─── Focus Styles (keyboard navigation) ───────── */
+  :focus-visible {
+    outline: 2px solid theme('colors.primary.DEFAULT');
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* ─── Scrollbar ─────────────────────────────────── */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #FFFDF8;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #B9770E;
+    border-radius: 3px;
+  }
+
+  /* ─── Images ────────────────────────────────────── */
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ─── Inputs ─────────────────────────────────────  */
+  input, textarea, select {
+    font-size: 1rem; /* Prevent iOS zoom on focus (must be ≥16px) */
+  }
+}
+
+@layer components {
+  /* ─── Buttons ────────────────────────────────────── */
+  .btn-primary {
+    @apply bg-primary text-white font-heading font-semibold px-6 py-3 rounded-xl
+           transition-all duration-200 hover:bg-primary-dark hover:shadow-primary
+           active:scale-[0.97] inline-flex items-center gap-2
+           min-h-[48px]; /* Touch target */
+  }
+
+  .btn-secondary {
+    @apply bg-white text-primary border-2 border-primary font-heading font-semibold px-6 py-3 rounded-xl
+           transition-all duration-200 hover:bg-primary hover:text-white
+           active:scale-[0.97] inline-flex items-center gap-2
+           min-h-[48px];
+  }
+
+  .btn-accent {
+    @apply bg-accent text-white font-heading font-semibold px-6 py-3 rounded-xl
+           transition-all duration-200 hover:bg-accent-dark
+           active:scale-[0.97] inline-flex items-center gap-2
+           min-h-[48px];
+  }
+
+  /* ─── Cards ──────────────────────────────────────── */
+  .card {
+    @apply bg-card rounded-xl shadow-soft border border-border;
+  }
+
+  /* ─── Section Headings ───────────────────────────── */
+  .section-heading {
+    @apply font-heading font-bold text-text;
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
+  }
+
+  .section-subheading {
+    @apply text-text-light mt-3 max-w-2xl mx-auto leading-relaxed;
+    font-size: clamp(0.9375rem, 2vw, 1.125rem);
+  }
+
+  /* ─── Section Padding ────────────────────────────── */
+  .section-padding {
+    @apply py-12 sm:py-16 md:py-20 lg:py-24;
+  }
+
+  /* ─── Badges ─────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+
+  .badge-green {
+    @apply badge bg-accent-light/10 text-accent border border-accent-light/30;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary/10 text-primary border border-primary/30;
+  }
+
+  .badge-yellow {
+    @apply badge bg-secondary/20 text-amber-700 border border-secondary/40;
+  }
+
+  /* ─── Layout ─────────────────────────────────────── */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* ─── Forms ──────────────────────────────────────── */
+  .input {
+    @apply w-full px-4 py-3 rounded-xl border border-border bg-white text-text
+           placeholder-text-lighter focus:outline-none focus:border-primary
+           focus:ring-2 focus:ring-primary/20 transition-all duration-200
+           min-h-[48px]; /* Touch target */
+    font-size: 1rem; /* Prevent iOS zoom */
+  }
+
+  .label {
+    @apply block text-sm font-semibold text-text mb-1.5;
+  }
+}
+
+@layer utilities {
+  /* ─── Text Gradient ──────────────────────────────── */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+  }
+
+  /* ─── Background Patterns ────────────────────────── */
+  .bg-hero-pattern {
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(185,119,14,0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(46,125,50,0.05) 0%, transparent 50%);
+  }
+
+  /* ─── Safe Area Support (notch/home bar) ─────────── */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* ─── Hide scrollbar ─────────────────────────────── */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ─── Touch-friendly tap area ────────────────────── */
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  /* ─── Reduce motion for accessibility ────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
