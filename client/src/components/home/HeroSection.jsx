@@ -5,24 +5,36 @@ import { CheckCircle2, ArrowRight, Wheat } from 'lucide-react';
 import { WHATSAPP_NUMBER, PHONE_NUMBER } from '../../constants';
 
 const highlights = [
-  'Factory Direct',
-  'Fresh Every Day',
-  'Bulk Supply Only',
+  { label: 'Factory Direct', color: 'green' },
+  { label: 'Fresh Every Day', color: 'red' },
+  { label: 'Bulk Supply Only', color: 'blue' },
 ];
+
+const chipClass = {
+  green: 'bg-accent/10 text-accent border-accent/30 border',
+  red: 'bg-primary/10 text-primary border-primary/30 border',
+  blue: 'bg-blue/10 text-blue border-blue/30 border',
+};
+
+const checkClass = {
+  green: 'text-accent',
+  red: 'text-primary',
+  blue: 'text-blue',
+};
 
 const HeroSection = () => (
   <section
-    className="relative min-h-[100svh] flex items-center bg-background overflow-hidden pt-14 sm:pt-16"
+    className="relative min-h-[100svh] flex items-center bg-white overflow-hidden pt-14 sm:pt-16 bg-hero-pattern"
     aria-label="Lohitha Murmura hero section"
   >
-    {/* Decorative blobs — lighter on mobile for performance */}
+    {/* Brand glow blobs */}
     <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
       <div className="absolute top-16 right-0 w-48 h-48 sm:w-80 sm:h-80 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-16 left-0 w-56 h-56 sm:w-96 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-16 left-0 w-56 h-56 sm:w-96 sm:h-96 bg-blue/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-[500px] sm:h-[500px] bg-accent/3 rounded-full blur-3xl" />
     </div>
 
     <div className="container-custom w-full py-10 sm:py-16 md:py-24 relative z-10">
-      {/* Content — centered on mobile, left-aligned on lg+ */}
       <div className="flex flex-col items-center text-center lg:items-start lg:text-left max-w-2xl mx-auto lg:mx-0">
 
         {/* Wholesale badge */}
@@ -30,31 +42,33 @@ const HeroSection = () => (
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 bg-primary/10 text-primary border border-primary/20 rounded-full px-4 py-2 mb-6 sm:mb-8"
+          className="inline-flex items-center gap-2 bg-blue/10 text-blue border border-blue/20 rounded-full px-4 py-2 mb-6 sm:mb-8"
         >
           <Wheat className="w-4 h-4 flex-shrink-0" />
           <span className="text-xs sm:text-sm font-semibold leading-none">Wholesale Factory · Siddipet, Telangana</span>
         </motion.div>
 
-        {/* Main heading — fluid size */}
+        {/* Main heading */}
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-heading font-extrabold text-text leading-[1.05] mb-3 sm:mb-4"
+          className="font-heading font-extrabold leading-[1.05] mb-3 sm:mb-4"
           style={{ fontSize: 'clamp(2.4rem, 10vw, 5.5rem)' }}
         >
-          LOHITHA
+          {/* LOHITHA = Official Red */}
+          <span className="text-primary">LOHITHA</span>
           <br />
-          <span className="text-gradient">MURMURA</span>
+          {/* MURMURA = Royal Blue */}
+          <span className="text-blue">MURMURA</span>
         </motion.h1>
 
-        {/* Tagline */}
+        {/* Tagline = Dark Green */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-heading font-semibold text-primary text-lg sm:text-xl md:text-2xl mb-1.5"
+          className="font-heading font-semibold text-accent text-lg sm:text-xl md:text-2xl mb-1.5"
         >
           Factory Fresh Murmura
         </motion.p>
@@ -90,21 +104,22 @@ const HeroSection = () => (
             <motion.div
               key={i}
               variants={staggerItem}
-              className="flex items-center gap-2 bg-white border border-border rounded-full px-4 py-2.5 shadow-soft"
+              className={`flex items-center gap-2 bg-white rounded-full px-4 py-2.5 shadow-soft ${chipClass[h.color]}`}
             >
-              <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0" />
-              <span className="text-text font-medium text-sm leading-none">{h}</span>
+              <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${checkClass[h.color]}`} />
+              <span className="text-text font-medium text-sm leading-none">{h.label}</span>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* CTA Buttons — full width on mobile, auto on larger */}
+        {/* CTA Buttons */}
         <motion.div
           className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
+          {/* Primary = Red */}
           <Link
             to="/products"
             className="flex items-center justify-center gap-2 w-full sm:w-auto btn-primary text-base px-8 py-4 min-h-[52px] rounded-xl"
@@ -112,6 +127,7 @@ const HeroSection = () => (
             Browse Products
             <ArrowRight className="w-5 h-5" />
           </Link>
+          {/* Secondary = Blue outline */}
           <a
             href="#contact"
             className="flex items-center justify-center gap-2 w-full sm:w-auto btn-secondary text-base px-8 py-4 min-h-[52px] rounded-xl"
@@ -136,7 +152,7 @@ const HeroSection = () => (
     {/* Wave divider */}
     <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
       <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block">
-        <path d="M0 48V24C360 0 720 48 1080 24C1260 12 1380 0 1440 0V48H0Z" fill="white" />
+        <path d="M0 48V24C360 0 720 48 1080 24C1260 12 1380 0 1440 0V48H0Z" fill="#F8F9FA" />
       </svg>
     </div>
   </section>

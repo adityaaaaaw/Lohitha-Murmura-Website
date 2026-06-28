@@ -64,10 +64,10 @@ const ProductDetailPage = () => {
   if (loading) return (
     <div className="pt-14 sm:pt-16 container-custom py-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <ProductCardSkeleton />
+        <div className="h-64 bg-secondary rounded-xl animate-pulse" />
         <div className="space-y-4">
           {[1,2,3,4,5].map(i => (
-            <div key={i} className="h-10 bg-border rounded-xl animate-pulse" />
+            <div key={i} className="h-10 bg-border/40 rounded-xl animate-pulse" />
           ))}
         </div>
       </div>
@@ -91,9 +91,9 @@ const ProductDetailPage = () => {
         {/* Breadcrumb */}
         <div className="bg-white border-b border-border">
           <div className="container-custom py-3 flex items-center gap-2 text-sm text-text-light overflow-x-auto scrollbar-hide whitespace-nowrap">
-            <Link to="/" className="hover:text-primary shrink-0 min-h-[44px] flex items-center">Home</Link>
+            <Link to="/" className="hover:text-blue shrink-0 min-h-[44px] flex items-center">Home</Link>
             <span className="shrink-0">/</span>
-            <Link to="/products" className="hover:text-primary shrink-0 min-h-[44px] flex items-center">Products</Link>
+            <Link to="/products" className="hover:text-blue shrink-0 min-h-[44px] flex items-center">Products</Link>
             <span className="shrink-0">/</span>
             <span className="text-text font-medium truncate">{product.name}</span>
           </div>
@@ -180,13 +180,13 @@ const ProductDetailPage = () => {
 
               {/* Name + stars */}
               <motion.div variants={staggerItem}>
-                <h1 className="font-heading font-bold text-text text-2xl sm:text-3xl md:text-4xl mb-2 leading-tight">
+                <h1 className="font-heading font-bold text-blue text-2xl sm:text-3xl md:text-4xl mb-2 leading-tight">
                   {product.name}
                 </h1>
                 <div className="flex items-center gap-2">
                   <div className="flex gap-0.5" aria-label="5 star rating">
                     {[1,2,3,4,5].map(s => (
-                      <Star key={s} className="w-4 h-4 text-secondary fill-secondary" aria-hidden />
+                      <Star key={s} className="w-4 h-4 text-primary fill-primary" aria-hidden />
                     ))}
                   </div>
                   <span className="text-text-light text-sm">Factory Fresh Quality</span>
@@ -228,7 +228,7 @@ const ProductDetailPage = () => {
                       className={`px-4 py-2.5 rounded-xl font-heading font-semibold text-sm border-2 transition-all min-h-[48px] min-w-[72px] active:scale-95 ${
                         !showCustom && selectedQty === qty
                           ? 'bg-primary text-white border-primary shadow-primary'
-                          : 'border-border text-text-light hover:border-primary hover:text-primary bg-white'
+                          : 'border-border text-text-light hover:border-blue hover:text-blue bg-white'
                       }`}
                       aria-pressed={!showCustom && selectedQty === qty}
                     >
@@ -269,18 +269,20 @@ const ProductDetailPage = () => {
 
               {/* CTA Buttons — stacked on mobile */}
               <motion.div variants={staggerItem} className="flex flex-col sm:flex-row gap-3">
+                {/* Add to Inquiry — Blue hover→Red */}
                 <button
                   onClick={handleAdd}
-                  className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-xl font-heading font-semibold text-base transition-all duration-200 min-h-[56px] active:scale-[0.98] ${
+                  className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-xl font-heading font-semibold text-base transition-all duration-300 min-h-[56px] active:scale-[0.98] ${
                     inCart
                       ? 'bg-accent/10 text-accent border-2 border-accent/30'
-                      : 'bg-primary text-white hover:bg-primary-dark hover:shadow-primary'
+                      : 'bg-blue text-white hover:bg-primary hover:shadow-primary'
                   }`}
                   aria-label={inCart ? 'Already in inquiry cart' : 'Add to inquiry cart'}
                 >
                   {inCart ? <CheckCircle2 className="w-5 h-5" /> : <ShoppingCart className="w-5 h-5" />}
                   {inCart ? 'Added to Inquiry' : 'Add to Inquiry Cart'}
                 </button>
+                {/* WhatsApp — Green */}
                 <button
                   onClick={handleWhatsApp}
                   className="flex items-center justify-center gap-2 sm:px-6 py-4 rounded-xl font-heading font-semibold text-base bg-[#25D366] text-white hover:bg-[#1da851] active:bg-[#168a40] transition-colors min-h-[56px]"

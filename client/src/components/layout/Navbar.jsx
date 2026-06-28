@@ -25,10 +25,8 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close drawer on route change
   useEffect(() => setDrawerOpen(false), [location]);
 
-  // Prevent body scroll when drawer open
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -44,20 +42,23 @@ const Navbar = () => {
         }`}
       >
         <div className="container-custom">
-          <div className="flex items-center justify-between h-14 sm:h-16 md:h-18">
+          <div className="flex items-center justify-between h-14 sm:h-16">
 
-            {/* Logo */}
+            {/* Logo — Red/Blue brand mark */}
             <Link
               to="/"
-              className="flex items-center gap-2 group min-h-[48px] py-1"
+              className="flex items-center gap-2.5 group min-h-[48px] py-1"
               aria-label="Lohitha Murmura Home"
             >
-              <div className="w-8 h-8 sm:w-9 sm:h-9 bg-primary rounded-lg flex items-center justify-center shadow-primary flex-shrink-0">
-                <Wheat className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+              {/* Brand icon with Red circle (lotus/brand mark) */}
+              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary rounded-xl flex items-center justify-center shadow-primary/30 shadow-md flex-shrink-0 group-hover:scale-105 transition-transform">
+                <Wheat className="w-5 h-5 text-white" />
               </div>
-              <div>
-                <p className="font-heading font-bold text-text text-xs sm:text-sm leading-none tracking-tight">LOHITHA</p>
-                <p className="font-heading font-bold text-primary text-[10px] sm:text-xs leading-none tracking-widest">MURMURA</p>
+              <div className="leading-none">
+                {/* LOHITHA = Red */}
+                <p className="font-heading font-extrabold text-primary text-sm leading-none tracking-tight">LOHITHA</p>
+                {/* MURMURA = Blue */}
+                <p className="font-heading font-bold text-blue text-[11px] leading-none tracking-widest mt-0.5">MURMURA</p>
               </div>
             </Link>
 
@@ -69,7 +70,7 @@ const Navbar = () => {
                   href={link.href}
                   className={`font-body font-medium text-sm transition-colors duration-200 py-1 border-b-2 ${
                     location.pathname === link.href
-                      ? 'text-primary border-primary'
+                      ? 'text-blue border-blue'
                       : 'text-text hover:text-primary border-transparent hover:border-primary/30'
                   }`}
                 >
@@ -80,22 +81,22 @@ const Navbar = () => {
 
             {/* Right Actions */}
             <div className="flex items-center gap-1 sm:gap-2">
-              {/* WhatsApp — Desktop only */}
+              {/* WhatsApp — stays green */}
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noreferrer"
-                className="hidden lg:flex items-center gap-2 bg-accent text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:bg-accent-dark transition-all duration-200 min-h-[44px]"
+                className="hidden lg:flex items-center gap-2 bg-[#25D366] text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:bg-[#1da851] transition-all duration-200 min-h-[44px]"
                 aria-label="Chat on WhatsApp"
               >
                 <MessageCircle className="w-4 h-4" />
                 WhatsApp
               </a>
 
-              {/* Cart Icon */}
+              {/* Cart */}
               <Link
                 to="/cart"
-                className="relative flex items-center justify-center w-12 h-12 rounded-xl hover:bg-primary/10 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-primary"
+                className="relative flex items-center justify-center w-12 h-12 rounded-xl hover:bg-primary/10 transition-colors duration-200"
                 aria-label={`Inquiry cart, ${totalItems} items`}
               >
                 <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 text-text" />
@@ -106,10 +107,10 @@ const Navbar = () => {
                 )}
               </Link>
 
-              {/* Hamburger — Mobile/Tablet */}
+              {/* Hamburger */}
               <button
                 onClick={() => setDrawerOpen(!drawerOpen)}
-                className="lg:hidden flex items-center justify-center w-12 h-12 rounded-xl hover:bg-primary/10 transition-colors focus-visible:outline-2 focus-visible:outline-primary"
+                className="lg:hidden flex items-center justify-center w-12 h-12 rounded-xl hover:bg-primary/10 transition-colors"
                 aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={drawerOpen}
               >
@@ -130,11 +131,10 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* Mobile Drawer — slides from right */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {drawerOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               key="backdrop"
               className="fixed inset-0 z-40 bg-black/40 lg:hidden"
@@ -146,7 +146,6 @@ const Navbar = () => {
               aria-hidden="true"
             />
 
-            {/* Drawer Panel */}
             <motion.nav
               key="drawer"
               className="fixed top-0 right-0 bottom-0 z-50 w-[80vw] max-w-[320px] bg-white shadow-hover flex flex-col lg:hidden"
@@ -156,20 +155,20 @@ const Navbar = () => {
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               aria-label="Mobile navigation"
             >
-              {/* Drawer header */}
-              <div className="flex items-center justify-between px-5 py-4 border-b border-border">
+              {/* Drawer header — Blue accent bar */}
+              <div className="flex items-center justify-between px-5 py-4 border-b-2 border-blue">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                     <Wheat className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="font-heading font-bold text-text text-xs leading-none">LOHITHA</p>
-                    <p className="font-heading font-bold text-primary text-[10px] leading-none tracking-widest">MURMURA</p>
+                    <p className="font-heading font-extrabold text-primary text-xs leading-none">LOHITHA</p>
+                    <p className="font-heading font-bold text-blue text-[10px] leading-none tracking-widest mt-0.5">MURMURA</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setDrawerOpen(false)}
-                  className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-background text-text-light"
+                  className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-secondary text-text-light"
                   aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
@@ -181,7 +180,6 @@ const Navbar = () => {
                 {MOBILE_NAV.map((item, i) => {
                   const Icon = item.icon;
                   const isActive = !item.external && location.pathname === item.href;
-                  const Tag = item.external ? 'a' : 'a';
                   return (
                     <motion.a
                       key={item.label}
@@ -191,17 +189,17 @@ const Navbar = () => {
                       onClick={() => !item.external && setDrawerOpen(false)}
                       className={`flex items-center gap-4 px-5 py-4 text-base font-medium transition-colors min-h-[56px] ${
                         isActive
-                          ? 'text-primary bg-primary/5 border-r-2 border-primary'
-                          : 'text-text hover:text-primary hover:bg-background'
+                          ? 'text-blue bg-blue/5 border-r-2 border-blue'
+                          : 'text-text hover:text-primary hover:bg-secondary'
                       }`}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 }}
                     >
                       <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                        isActive ? 'bg-primary/10' : 'bg-background'
+                        isActive ? 'bg-blue/10' : 'bg-secondary'
                       }`}>
-                        <Icon className={`w-5 h-5 ${isActive ? 'text-primary' : 'text-text-light'}`} />
+                        <Icon className={`w-5 h-5 ${isActive ? 'text-blue' : 'text-text-light'}`} />
                       </div>
                       {item.label}
                     </motion.a>
@@ -209,7 +207,7 @@ const Navbar = () => {
                 })}
               </div>
 
-              {/* Drawer Footer Actions */}
+              {/* Drawer Footer */}
               <div className="p-4 border-t border-border space-y-3">
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello Lohitha Murmura! I would like to enquire about bulk murmura orders.')}`}
@@ -223,7 +221,7 @@ const Navbar = () => {
                 <Link
                   to="/cart"
                   onClick={() => setDrawerOpen(false)}
-                  className="flex items-center justify-center gap-3 w-full py-3.5 bg-primary/10 text-primary font-heading font-semibold text-sm rounded-xl hover:bg-primary/20 transition-colors min-h-[52px]"
+                  className="flex items-center justify-center gap-3 w-full py-3.5 bg-blue/10 text-blue font-heading font-semibold text-sm rounded-xl hover:bg-blue/20 transition-colors min-h-[52px]"
                 >
                   <ShoppingCart className="w-5 h-5" />
                   View Inquiry Cart

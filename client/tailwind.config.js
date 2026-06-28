@@ -4,34 +4,55 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#FFFDF8',
+        /* ── Brand Palette (Official Packaging) ── */
+        background: '#FFFFFF',
+        'background-alt': '#F8F9FA',
         card: '#FFFFFF',
+
+        /* Primary = Official Red */
         primary: {
-          DEFAULT: '#B9770E',
-          light: '#D97706',
-          dark: '#92600B',
+          DEFAULT: '#D71920',
+          light: '#E84B51',
+          dark: '#B01318',
         },
+
+        /* Brand Blue = Royal Blue */
+        blue: {
+          DEFAULT: '#2E3192',
+          light: '#4B54C4',
+          dark: '#1E2070',
+        },
+
+        /* Accent = Dark Green */
         accent: {
-          DEFAULT: '#2E7D32',
-          light: '#4CAF50',
-          dark: '#1B5E20',
+          DEFAULT: '#1F6B3A',
+          light: '#2E8A4A',
+          dark: '#155229',
         },
+
+        /* Neutral secondary */
         secondary: {
-          DEFAULT: '#FBBF24',
-          light: '#FCD34D',
+          DEFAULT: '#F8F9FA',
+          light: '#FFFFFF',
         },
+
+        /* Text */
         text: {
           DEFAULT: '#1F2937',
           light: '#6B7280',
           lighter: '#9CA3AF',
         },
-        border: '#E8E8E8',
+
+        /* Border */
+        border: '#E5E7EB',
       },
+
       fontFamily: {
         heading: ['Poppins', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
         sans: ['Inter', 'sans-serif'],
       },
+
       borderRadius: {
         DEFAULT: '16px',
         sm: '8px',
@@ -41,19 +62,36 @@ export default {
         '2xl': '32px',
         full: '9999px',
       },
+
       boxShadow: {
         soft: '0 2px 15px rgba(0,0,0,0.06)',
         card: '0 4px 24px rgba(0,0,0,0.08)',
         hover: '0 8px 40px rgba(0,0,0,0.12)',
-        primary: '0 4px 20px rgba(185,119,14,0.25)',
+        /* Brand shadows */
+        primary: '0 4px 20px rgba(215,25,32,0.28)',
+        blue: '0 4px 20px rgba(46,49,146,0.28)',
+        accent: '0 4px 20px rgba(31,107,58,0.25)',
       },
+
       animation: {
         'fade-up': 'fadeUp 0.6s ease-out both',
         'fade-in': 'fadeIn 0.4s ease-out both',
+        'bounce-slow': 'bounceSlow 4s ease-in-out infinite',
       },
+
       keyframes: {
-        fadeUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        bounceSlow: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
       },
     },
   },

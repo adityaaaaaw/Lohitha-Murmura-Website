@@ -10,7 +10,7 @@ const highlights = [
 ];
 
 const AboutSection = () => (
-  <section id="about" className="section-padding bg-background">
+  <section id="about" className="section-padding bg-white">
     <div className="container-custom">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
         {/* Images */}
@@ -22,7 +22,7 @@ const AboutSection = () => (
           variants={slideLeft}
         >
           <div className="space-y-4">
-            <div className="rounded-xl overflow-hidden aspect-[3/4] bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center">
+            <div className="rounded-xl overflow-hidden aspect-[3/4] bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
               <div className="text-center p-4">
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Factory className="w-8 h-8 text-primary" />
@@ -30,7 +30,7 @@ const AboutSection = () => (
                 <p className="text-primary font-semibold text-sm">Our Factory</p>
               </div>
             </div>
-            <div className="rounded-xl overflow-hidden aspect-square bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+            <div className="rounded-xl overflow-hidden aspect-square bg-gradient-to-br from-accent/10 to-accent/20 flex items-center justify-center">
               <div className="text-center p-4">
                 <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-2">
                   <Leaf className="w-6 h-6 text-accent" />
@@ -40,15 +40,15 @@ const AboutSection = () => (
             </div>
           </div>
           <div className="space-y-4 mt-8">
-            <div className="rounded-xl overflow-hidden aspect-square bg-gradient-to-br from-yellow-100 to-yellow-200 flex items-center justify-center">
+            <div className="rounded-xl overflow-hidden aspect-square bg-gradient-to-br from-blue/10 to-blue/20 flex items-center justify-center">
               <div className="text-center p-4">
-                <div className="w-12 h-12 bg-secondary/30 rounded-full flex items-center justify-center mx-auto mb-2">
-                  <Star className="w-6 h-6 text-amber-600" />
+                <div className="w-12 h-12 bg-blue/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <Star className="w-6 h-6 text-blue" />
                 </div>
-                <p className="text-amber-700 font-semibold text-xs">Premium</p>
+                <p className="text-blue font-semibold text-xs">Premium</p>
               </div>
             </div>
-            <div className="rounded-xl overflow-hidden aspect-[3/4] bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
+            <div className="rounded-xl overflow-hidden aspect-[3/4] bg-gradient-to-br from-primary/10 to-blue/10 flex items-center justify-center">
               <div className="text-center p-4">
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Truck className="w-8 h-8 text-primary" />
@@ -66,7 +66,7 @@ const AboutSection = () => (
           viewport={{ once: true, margin: '-80px' }}
           variants={slideRight}
         >
-          <span className="badge-primary mb-4 inline-block">About Us</span>
+          <span className="badge-blue mb-4 inline-block">About Us</span>
           <h2 className="section-heading mb-5">
             Lohitha Murmura —<br />
             <span className="text-gradient">Factory Direct Quality</span>
@@ -100,12 +100,12 @@ const AboutSection = () => (
 
           <div className="flex flex-wrap gap-6">
             <div className="text-center">
-              <p className="font-heading font-bold text-3xl text-primary">500+</p>
+              <p className="font-heading font-bold text-3xl text-blue">500+</p>
               <p className="text-text-light text-sm mt-1">Retail Partners</p>
             </div>
             <div className="w-px bg-border" />
             <div className="text-center">
-              <p className="font-heading font-bold text-3xl text-primary">5+</p>
+              <p className="font-heading font-bold text-3xl text-blue">5+</p>
               <p className="text-text-light text-sm mt-1">Years Experience</p>
             </div>
             <div className="w-px bg-border" />
