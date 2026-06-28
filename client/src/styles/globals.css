@@ -169,6 +169,26 @@
 
   .touch-target { min-height: 48px; min-width: 48px; }
 
+  /* Hero grid reordering areas */
+  .hero-grid {
+    display: grid;
+    grid-template-areas:
+      "heading"
+      "image"
+      "details";
+  }
+  @media (min-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-areas:
+        "heading image"
+        "details image";
+    }
+  }
+  .area-heading { grid-area: heading; }
+  .area-image { grid-area: image; }
+  .area-details { grid-area: details; }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
