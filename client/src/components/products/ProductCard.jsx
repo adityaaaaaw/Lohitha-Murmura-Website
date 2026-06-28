@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
   );
   const [showCustomInput, setShowCustomInput] = useState(false);
   const [customQty, setCustomQty] = useState('');
-  const { addItem, items } = useCart();
+  const { addItem, items, setCartOpen } = useCart();
   const inCart = items.some((i) => i.productId === product._id);
 
   const quantities = product.availableQuantities?.length
@@ -42,6 +42,7 @@ const ProductCard = ({ product }) => {
       image: product.images?.[0]?.url || '',
     });
     toast.success(`${product.name} added to inquiry!`);
+    setCartOpen(true);
   };
 
   return (

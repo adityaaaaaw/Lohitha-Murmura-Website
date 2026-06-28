@@ -24,7 +24,7 @@ const ProductDetailPage = () => {
   const [selectedQty, setSelectedQty] = useState(50);
   const [customQty, setCustomQty] = useState('');
   const [showCustom, setShowCustom] = useState(false);
-  const { addItem, items } = useCart();
+  const { addItem, items, setCartOpen } = useCart();
   const inCart = items.some((i) => i.productId === product?._id);
 
   useEffect(() => {
@@ -50,6 +50,7 @@ const ProductDetailPage = () => {
       image: product.images?.[0]?.url || '',
     });
     toast.success(`${product.name} (${effectiveQty} bags) added!`);
+    setCartOpen(true);
   };
 
   const handleWhatsApp = () => {

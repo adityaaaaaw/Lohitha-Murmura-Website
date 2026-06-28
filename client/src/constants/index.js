@@ -58,10 +58,9 @@ export const TESTIMONIALS = [
 ];
 
 export const FAQS = [
-  { q: 'What is the minimum order quantity?', a: 'Our minimum order is 50 bags. We cater exclusively to bulk buyers including wholesalers, retailers, and distributors.' },
-  { q: 'Do you offer delivery?', a: 'Yes, we deliver across Telangana and Andhra Pradesh. Delivery charges vary based on location and order size. Contact us for details.' },
-  { q: 'Can I visit the factory?', a: 'Absolutely! We welcome visits from potential buyers. Please call us in advance to schedule a factory visit.' },
-  { q: 'What are the accepted payment methods?', a: 'We accept Bank Transfer (NEFT/RTGS/UPI) and Cash payments. All transactions are fully documented.' },
-  { q: 'How fresh is the murmura?', a: 'Our murmura is produced fresh daily. Orders are dispatched the same or next day to ensure maximum freshness.' },
-  { q: 'Do you provide custom packaging?', a: 'Yes, we offer custom packaging options for large volume orders. Contact us to discuss your requirements.' },
+  { q: 'What is the minimum order?', a: 'Our minimum order is 50 bags. We cater exclusively to bulk buyers, wholesalers, retailers, and distributors.' },
+  { q: 'What are your delivery locations?', a: 'We deliver directly to wholesalers and retailers across all districts of Telangana and Andhra Pradesh.' },
+  { q: 'What packaging sizes are available?', a: 'Our standard wholesale packaging is in 20kg and 25kg double-walled bags, packed fresh daily to retain maximum crispiness.' },
+  { q: 'What payment methods do you accept?', a: 'We accept Bank Transfer (NEFT/RTGS), UPI, and cash payments upon order confirmation.' },
+  { q: 'Can we schedule a factory visit?', a: 'Yes! We welcome distributors and bulk buyers to visit our plant in Siddipet. Please call in advance to coordinate a visit.' },
 ];

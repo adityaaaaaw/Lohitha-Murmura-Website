@@ -136,8 +136,8 @@ const ProductsPage = () => {
 
           {/* Product Grid — 1 col mobile, 2 col sm, 3 col lg, 4 col xl */}
           {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
-              {Array.from({ length: 8 }).map((_, i) => <ProductCardSkeleton key={i} />)}
+            <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5 lg:gap-6">
+              {Array.from({ length: 10 }).map((_, i) => <ProductCardSkeleton key={i} />)}
             </div>
           ) : products.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 sm:py-28 text-center">
@@ -161,7 +161,7 @@ const ProductsPage = () => {
             </div>
           ) : (
             <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6"
+              className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5 lg:gap-6"
               variants={staggerContainer}
               initial="hidden"
               animate="visible"

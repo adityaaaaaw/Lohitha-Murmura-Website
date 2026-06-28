@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect } from 'react';
+import { createContext, useContext, useReducer, useEffect, useState } from 'react';
 
 const CartContext = createContext();
 
@@ -57,8 +57,10 @@ export const CartProvider = ({ children }) => {
   const totalItems = state.items.length;
   const totalBags = state.items.reduce((sum, i) => sum + i.quantity, 0);
 
+  const [isCartOpen, setCartOpen] = useState(false);
+
   return (
-    <CartContext.Provider value={{ items: state.items, addItem, removeItem, updateQty, clearCart, totalItems, totalBags }}>
+    <CartContext.Provider value={{ items: state.items, addItem, removeItem, updateQty, clearCart, totalItems, totalBags, isCartOpen, setCartOpen }}>
       {children}
     </CartContext.Provider>
   );

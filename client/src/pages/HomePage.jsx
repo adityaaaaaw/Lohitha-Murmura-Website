@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { pageTransition } from '../animations/variants';
 import HeroSection from '../components/home/HeroSection';
+import ContactInfoBar from '../components/home/ContactInfoBar';
 import ContactSection from '../components/home/ContactSection';
 import FeaturedProducts from '../components/home/FeaturedProducts';
 import AboutSection from '../components/home/AboutSection';
@@ -19,13 +20,14 @@ const HomePage = () => (
     </Helmet>
     <motion.div {...pageTransition}>
       <HeroSection />
-      <ContactSection />
+      <ContactInfoBar />
       <FeaturedProducts />
       <AboutSection />
       <WhyChooseUs />
       <DeliverySection />
       <TestimonialsSection />
       <FAQSection />
+      <ContactSection />
     </motion.div>
   </>
 );

@@ -1,12 +1,19 @@
 import { motion } from 'framer-motion';
 import { fadeUp, slideLeft, slideRight, staggerContainer, staggerItem } from '../../animations/variants';
-import { CheckCircle2, Factory, Leaf, Star, Truck } from 'lucide-react';
+import { Factory, Leaf, Star, Truck } from 'lucide-react';
 
 const highlights = [
   { icon: Factory, text: 'Modern manufacturing facility' },
   { icon: Leaf, text: 'Fresh daily production' },
   { icon: Star, text: 'Premium quality assurance' },
   { icon: Truck, text: 'Pan-Telangana delivery' },
+];
+
+const timelineSteps = [
+  { step: '01', title: 'Raw Rice Selection', desc: 'Directly sourced premium paddy rice selected for uniform grain size.' },
+  { step: '02', title: 'Controlled Roasting', desc: 'Traditional roasting techniques combined with modern temperature controls.' },
+  { step: '03', title: 'Hygienic Packaging', desc: 'Packed fresh on site in durable 20kg/25kg bulk bags to preserve crispiness.' },
+  { step: '04', title: 'Quick Distribution', desc: 'Fast load-out and direct supply logistics across Telangana & Andhra Pradesh.' },
 ];
 
 const AboutSection = () => (
@@ -25,17 +32,17 @@ const AboutSection = () => (
             <div className="rounded-xl overflow-hidden aspect-[3/4] bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
               <div className="text-center p-4">
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Factory className="w-8 h-8 text-primary" />
+                  <Factory className="w-8 h-8 text-[#D71920]" />
                 </div>
-                <p className="text-primary font-semibold text-sm">Our Factory</p>
+                <p className="text-[#D71920] font-semibold text-sm">Our Factory</p>
               </div>
             </div>
             <div className="rounded-xl overflow-hidden aspect-square bg-gradient-to-br from-accent/10 to-accent/20 flex items-center justify-center">
               <div className="text-center p-4">
                 <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                  <Leaf className="w-6 h-6 text-accent" />
+                  <Leaf className="w-6 h-6 text-[#1F6B3A]" />
                 </div>
-                <p className="text-accent font-semibold text-xs">Fresh Daily</p>
+                <p className="text-[#1F6B3A] font-semibold text-xs">Fresh Daily</p>
               </div>
             </div>
           </div>
@@ -51,9 +58,9 @@ const AboutSection = () => (
             <div className="rounded-xl overflow-hidden aspect-[3/4] bg-gradient-to-br from-primary/10 to-blue/10 flex items-center justify-center">
               <div className="text-center p-4">
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Truck className="w-8 h-8 text-primary" />
+                  <Truck className="w-8 h-8 text-[#D71920]" />
                 </div>
-                <p className="text-primary font-semibold text-sm">Bulk Supply</p>
+                <p className="text-[#D71920] font-semibold text-sm">Bulk Supply</p>
               </div>
             </div>
           </div>
@@ -90,7 +97,7 @@ const AboutSection = () => (
               return (
                 <motion.div key={i} variants={staggerItem} className="flex items-center gap-3">
                   <div className="w-9 h-9 bg-accent/10 rounded-lg flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-accent" />
+                    <Icon className="w-5 h-5 text-[#1F6B3A]" />
                   </div>
                   <span className="text-text text-sm font-medium">{h.text}</span>
                 </motion.div>
@@ -110,11 +117,45 @@ const AboutSection = () => (
             </div>
             <div className="w-px bg-border" />
             <div className="text-center">
-              <p className="font-heading font-bold text-3xl text-primary">Daily</p>
+              <p className="font-heading font-bold text-3xl text-[#D71920]">Daily</p>
               <p className="text-text-light text-sm mt-1">Fresh Production</p>
             </div>
           </div>
         </motion.div>
+      </div>
+
+      {/* Process Timeline Section */}
+      <div className="mt-20 pt-16 border-t border-border">
+        <div className="text-center mb-12">
+          <h3 className="font-heading font-bold text-text text-2xl sm:text-3xl">
+            Our Manufacturing Process
+          </h3>
+          <p className="text-text-light text-sm sm:text-base mt-2 max-w-lg mx-auto">
+            Step-by-step roasting and distribution flow at our plant.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+          {/* Connector line for desktop */}
+          <div className="hidden md:block absolute top-6 left-12 right-12 h-0.5 bg-[#1F6B3A]/25 z-0" />
+          
+          {timelineSteps.map((t, idx) => (
+            <div
+              key={idx}
+              className="relative z-10 flex flex-col items-center text-center p-6 bg-white rounded-2xl border border-border shadow-soft hover:shadow-md transition-shadow duration-300"
+            >
+              <div className="w-12 h-12 rounded-full bg-[#1F6B3A] text-white flex items-center justify-center font-heading font-extrabold text-sm mb-4">
+                {t.step}
+              </div>
+              <h4 className="font-heading font-bold text-text text-base mb-2">
+                {t.title}
+              </h4>
+              <p className="text-text-light text-xs sm:text-sm leading-relaxed">
+                {t.desc}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>

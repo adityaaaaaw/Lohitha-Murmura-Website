@@ -4,7 +4,7 @@ import { useCart } from '../../context/CartContext';
 import { WHATSAPP_NUMBER, PHONE_NUMBER } from '../../constants';
 
 const MobileBottomBar = () => {
-  const { totalItems } = useCart();
+  const { totalItems, setCartOpen } = useCart();
 
   return (
     <div
@@ -40,12 +40,12 @@ const MobileBottomBar = () => {
         </a>
 
         {/* Inquiry Cart — Red badge */}
-        <Link
-          to="/cart"
-          className="relative flex flex-col items-center justify-center gap-1 py-3 min-h-[64px] text-text hover:bg-primary/5 active:bg-primary/10 transition-colors border-l border-border"
+        <button
+          onClick={() => setCartOpen(true)}
+          className="relative flex flex-col items-center justify-center gap-1 py-3 min-h-[64px] text-text hover:bg-primary/5 active:bg-primary/10 transition-colors border-l border-border w-full text-center"
           aria-label={`Inquiry cart, ${totalItems} items`}
         >
-          <div className="relative w-9 h-9 bg-primary/10 rounded-xl flex items-center justify-center">
+          <div className="relative w-9 h-9 bg-primary/10 rounded-xl flex items-center justify-center mx-auto">
             <ShoppingCart className="w-5 h-5 text-primary" />
             {totalItems > 0 && (
               <span className="absolute -top-1 -right-1 min-w-[16px] h-4 bg-primary text-white text-[9px] font-bold rounded-full flex items-center justify-center px-0.5 leading-none">
@@ -53,8 +53,8 @@ const MobileBottomBar = () => {
               </span>
             )}
           </div>
-          <span className="text-[11px] font-semibold font-heading text-text leading-none">Inquiry Cart</span>
-        </Link>
+          <span className="text-[11px] font-semibold font-heading text-text leading-none mt-1">Inquiry Cart</span>
+        </button>
 
       </div>
     </div>

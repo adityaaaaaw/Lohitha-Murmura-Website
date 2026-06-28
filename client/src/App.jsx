@@ -8,6 +8,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import FloatingWhatsApp from './components/layout/FloatingWhatsApp';
 import MobileBottomBar from './components/layout/MobileBottomBar';
+import InquiryCartDrawer from './components/layout/InquiryCartDrawer';
 
 // Lazy loaded pages
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -47,6 +48,7 @@ const PublicLayout = ({ children }) => (
     <Footer />
     <FloatingWhatsApp />
     <MobileBottomBar />
+    <InquiryCartDrawer />
   </>
 );
 
