@@ -1,0 +1,120 @@
+# ═══════════════════════════════════════════════════════
+#  Lohitha Murmura — Comprehensive .gitignore
+#  Covers: Node.js, React/Vite, Express, OS, editors
+# ═══════════════════════════════════════════════════════
+
+# ── Dependencies ───────────────────────────────────────
+node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# ── Build Outputs ───────────────────────────────────────
+dist/
+build/
+out/
+.next/
+.nuxt/
+.vite/
+.output/
+*.tsbuildinfo
+
+# ── Environment Variables ───────────────────────────────
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env.staging
+
+# ── Logs ───────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ── Cache & Temp ────────────────────────────────────────
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+*.swp
+*.swo
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# ── Testing ─────────────────────────────────────────────
+coverage/
+.nyc_output/
+junit.xml
+test-results/
+
+# ── Package Manager Lock Files (keep package-lock.json) ─
+# Uncomment if you want to ignore lock files:
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# ── Runtime & Process ───────────────────────────────────
+pids/
+*.pid
+*.seed
+*.pid.lock
+.node_repl_history
+
+# ── OS Files ────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ── Editor / IDE ────────────────────────────────────────
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.history/
+
+# ── Tailwind / PostCSS Generated ────────────────────────
+# (Compiled CSS is generated at build time)
+# dist/assets/*.css  <-- already covered by dist/
+
+# ── Miscellaneous Generated Files ───────────────────────
+# Vite temp files
+--force
+vite.config.js.timestamp-*
+
+# Cloudinary upload temp
+uploads/
+tmp/
+public/uploads/
+
+# ── TypeScript ───────────────────────────────────────────
+*.js.map
+*.d.ts.map
+
+# ── Storybook ───────────────────────────────────────────
+storybook-static/
+
+# ── Sentry ──────────────────────────────────────────────
+.sentryclirc
