@@ -33,8 +33,7 @@ const FloatingWhatsApp = () => {
       target="_blank"
       rel="noreferrer"
       aria-label="Chat on WhatsApp"
-      /* On mobile: above bottom bar (bottom-20 = 80px). On lg+: bottom-8 */
-      className="fixed bottom-[84px] right-4 z-40 lg:bottom-8 lg:right-6"
+      className="fixed z-[9999] bottom-[96px] right-4 sm:bottom-[96px] sm:right-5 lg:bottom-8 lg:right-6"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1.2, type: 'spring', stiffness: 220, damping: 18 }}
